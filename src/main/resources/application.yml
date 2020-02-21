@@ -1,0 +1,33 @@
+server:
+  port: 8050
+  servlet:
+    context-path: /ussd
+
+spring:
+  application:
+    name: ussd
+  datasource:
+    url: jdbc:h2:mem:ussd;DB_CLOSE_DELAY=-1;MODE=ORACLE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    show-sql: true
+    database: default
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  liquibase:
+    change-log: classpath:/db/main-changelog.xml
